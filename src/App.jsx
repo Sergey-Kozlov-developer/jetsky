@@ -1,10 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/navigation";
 import Home from "./pages/Home.jsx";
-import Products from "./pages/Products.jsx";
-import Contacts from "./pages/Contacts.jsx";
-import Publication from "./pages/Publications.jsx";
-import Company from "./pages/Company.jsx";
+import Allterrain from "./pages/Allterrain.jsx";
+import Jetskis from "./pages/Jetskis.jsx";
+import Quadbike from "./pages/Quadbike.jsx";
+import Engines from "./pages/Engines.jsx";
+import Boats from "./pages/Boats.jsx";
+import Snowmobiles from "./pages/Snowmobiles.jsx";
+import Spareparts from "./pages/Spareparts.jsx";
 
 function App() {
     return (
@@ -15,10 +18,13 @@ function App() {
             <div className="container">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path="/contacts" element={<Contacts />} />
-                    <Route path="/publication" element={<Publication />} />
-                    <Route path="/company" element={<Company />} />
+                    <Route path="/jetskis" element={<Jetskis />} />
+                    <Route path="/boats" element={<Boats />} />
+                    <Route path="/allterrain" element={<Allterrain />} />
+                    <Route path="/spareparts" element={<Spareparts />} />
+                    <Route path="/quadbike" element={<Quadbike />} />
+                    <Route path="/snowmobiles" element={<Snowmobiles />} />
+                    <Route path="/engines" element={<Engines />} />
                 </Routes>
             </div>
         </>

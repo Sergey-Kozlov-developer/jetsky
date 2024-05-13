@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/mis.svg";
+import logo from "../../assets/drivelogo.svg";
 import style from "./Navigation.module.scss";
 
 function Navigation() {
@@ -9,20 +9,33 @@ function Navigation() {
             page: "Главная",
         },
         {
-            to: "/company",
-            page: "Компания MIS",
+            to: "/allterrain",
+            page: "Вездеходы",
         },
         {
-            to: "/products",
-            page: "Продукция",
+            to: "/quadbike",
+            page: "Квадроциклы",
         },
         {
-            to: "/publication",
-            page: "Публикации",
+            to: "/snowmobiles",
+            page: "Снегоходы",
         },
         {
-            to: "/contacts",
-            page: "Контакты",
+            to: "/jetskis",
+            page: "Гидроциклы",
+        },
+        {
+            to: "/boats",
+            page: "Катера",
+        },
+        // Engines
+        {
+            to: "/engines",
+            page: "Двигатели",
+        },
+        {
+            to: "/spareparts",
+            page: "Запчасти",
         },
     ];
 
@@ -31,7 +44,7 @@ function Navigation() {
             <div className={style.nav}>
                 <div className={style.logo}>
                     <img src={logo} alt="" className={style.nav__logo} />
-                    <h3 className={style.logo__text}>Implants Technologies</h3>
+                    <h3 className={style.logo__text}>Скорость и экстрим</h3>
                 </div>
 
                 <ul className={style.nav__list}>
