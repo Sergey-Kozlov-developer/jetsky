@@ -4,10 +4,12 @@ a {
     color: $nav-text;
     font-size: 20px;
     font-weight: 500;
-    transition: color 0.2s ease-in;
+    transition: color 0.3s ease-in;
+    // padding-bottom: 16px;
 
     &:hover {
         color: $link-hover;
+        // border-bottom: 2px solid black;
     }
 }
 .wrap__nav {

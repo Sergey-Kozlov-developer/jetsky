@@ -36,4 +36,28 @@
 }
 .active {
     color: #0068aa;
+    // border-bottom: 2px solid black;
+}
+
+a {
+    display: inline-block;
+    color: #00bfff; /* Цвет обычной ссылки */
+    line-height: 1;
+    text-decoration: none; /* Убираем подчеркивание */
+    cursor: pointer;
+}
+a:after {
+    background-color: #f66d52; /* Цвет линии при наведении на нее курсора мыши */
+    display: block;
+    content: "";
+    height: 2px; /* Высота линии */
+    width: 0%;
+    -webkit-transition: width 0.3s ease-in-out;
+    -moz--transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+    margin-top: 10px;
+}
+a:hover:after,
+a:focus:after {
+    width: 100%;
 }
