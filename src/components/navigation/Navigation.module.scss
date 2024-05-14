@@ -35,13 +35,12 @@
     gap: 20px;
 }
 .active {
-    color: #0068aa;
-    border-bottom: 1px solid #f66d52;
+    color: #f66d52;
 }
 
 a {
     display: inline-block;
-    color: #00bfff; /* Цвет обычной ссылки */
+    color: #f66d52; /* Цвет обычной ссылки */
     line-height: 1;
     text-decoration: none; /* Убираем подчеркивание */
     cursor: pointer;
