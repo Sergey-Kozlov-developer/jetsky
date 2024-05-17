@@ -1,29 +1,36 @@
 import styles from "./Categories.module.scss";
 
+import quadbike from "../../assets/img/categories/quadbike.png";
+import allterrain from "../../assets/img/categories/allterrain.png";
+import boat from "../../assets/img/categories/boat.png";
+import jetski from "../../assets/img/categories/jetski.png";
+import moto from "../../assets/img/categories/moto.png";
+import snowmobiles from "../../assets/img/categories/snowmobiles.png";
+
 function Categories() {
-    const categories = [
-        "Поиск по номеру",
-        "Поиск по марке",
-        "Поиск по названию товара",
+    const technics = [
+        { name: "Квадроциклы", img: quadbike },
+        { name: "Гидроциклы", img: jetski },
+        { name: "Катера", img: boat },
+        { name: "Снегоходы", img: snowmobiles },
+        { name: "Двигатели", img: moto },
+        { name: "Вездеходы", img: allterrain },
     ];
 
     return (
-        <div className={styles.categories}>
-            <ul>
-                {categories.map((categoryName, index) => (
-                    <li key={index}>{categoryName}</li>
+        <>
+            <div className={styles.categories__wrapper}>
+                {technics.map((technic, index) => (
+                    <div key={index} className={styles.categories}>
+                        <div className={styles.categories__text}>
+                            <span>{technic.name}</span>
+                            <button>Подробнее</button>
+                        </div>
+                        <img src={technic.img} alt="" />
+                    </div>
                 ))}
-            </ul>
-            <span>
-                <input
-                    className={styles.basic__slide}
-                    id="search"
-                    type="text"
-                    placeholder="Введите марку"
-                />
-                <label htmlFor="search">Поиск</label>
-            </span>
-        </div>
+            </div>
+        </>
     );
 }
 
