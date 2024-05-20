@@ -1,13 +1,14 @@
 import Swiper from "../components/swiper/index";
 import Search from "../components/search";
-import Categories from "../components/categories";
+// import Traffics from "../components/traffics";
+// import { useState } from "react";
 
 export const Home = () => {
     return (
         <>
             <Swiper />
             <Search />
-            <Categories />
+            {/* <Traffics /> */}
         </>
     );
 };
