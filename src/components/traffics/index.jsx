@@ -20,7 +20,7 @@ function Traffics({ filteredTraffics }) {
 }
 
 Traffics.propTypes = {
-    filteredTraffics: PropTypes.string,
+    filteredTraffics: PropTypes.array,
 };
 
 export default Traffics;

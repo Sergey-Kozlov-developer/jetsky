@@ -1,7 +1,8 @@
 .categories__wrapper {
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-gap: 20px;
 }
 
 .categories {
@@ -11,11 +12,22 @@
     // justify-content: space-between;
     width: 370px;
     height: 129px;
-    border: 1px solid black;
+    border: 1px solid #d7d6d6;
+    cursor: pointer;
+    transition:
+        box-shadow 0.4s ease-in,
+        border 0.4s ease-in,
+        scale 0.4s;
 
     img {
         padding-top: 22px;
         padding-right: 37px;
+    }
+
+    &:hover {
+        border: 0px;
+        box-shadow: 1px 11px 12px rgba(0, 0, 0, 0.2);
+        scale: 0.9;
     }
 }
 .categories__text {

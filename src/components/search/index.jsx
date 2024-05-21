@@ -20,7 +20,7 @@ function Search({ searchValueTarget }) {
     );
 }
 Search.propTypes = {
-    searchValueTarget: PropTypes.string,
+    searchValueTarget: PropTypes.func,
 };
 
 export default Search;
