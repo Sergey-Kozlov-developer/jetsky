@@ -74,9 +74,9 @@ export default function App() {
                         <p className={styles.sale__text}>
                             Акция действует до
                             <br />
-                            <p className={styles.sale__text_color}>
+                            <span className={styles.sale__text_color}>
                                 31.08.2020
-                            </p>
+                            </span>
                         </p>
                     </div>
                 </div>
