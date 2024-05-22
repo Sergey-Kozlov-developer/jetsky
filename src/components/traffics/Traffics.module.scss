@@ -1,11 +1,11 @@
-.categories__wrapper {
+.traffics__wrapper {
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
 
-.categories {
+.traffics {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -24,17 +24,17 @@
         padding-right: 37px;
     }
 
-    &:hover {
-        border: 0px;
-        box-shadow: 1px 11px 12px rgba(0, 0, 0, 0.2);
-        scale: 0.9;
-    }
+    // &:hover {
+    //     border: 0px;
+    //     box-shadow: 1px 11px 12px rgba(0, 0, 0, 0.2);
+    //     scale: 0.9;
+    // }
 }
-.categories__text {
+.traffics__text {
     display: flex;
     flex-direction: column;
     gap: 50px;
-    span {
+    a {
         font-size: 23px;
         font-weight: 600;
         padding-top: 20px;

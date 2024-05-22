@@ -1,30 +1,34 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import Swiper from "../components/swiper/index";
 import Search from "../components/search";
 import Traffics from "../components/traffics";
-import { useState } from "react";
-import quadbike from "../assets/img/categories/quadbike.png";
-import allterrain from "../assets/img/categories/allterrain.png";
-import boat from "../assets/img/categories/boat.png";
-import jetski from "../assets/img/categories/jetski.png";
-import moto from "../assets/img/categories/moto.png";
-import snowmobiles from "../assets/img/categories/snowmobiles.png";
 
 export const Home = () => {
     // useState для поиска
     const [value, setValue] = useState("");
+    // useState для получения данных с бэка
+    const [data, setData] = useState([]);
     // поиск. получение значение из input
     const searchValueTarget = (event) => setValue(event.target.value);
 
-    const technics = [
-        { name: "Квадроциклы", img: quadbike },
-        { name: "Гидроциклы", img: jetski },
-        { name: "Катера", img: boat },
-        { name: "Снегоходы", img: snowmobiles },
-        { name: "Двигатели", img: moto },
-        { name: "Вездеходы", img: allterrain },
-    ];
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    "https://91f9067365762f2e.mokky.dev/items"
+                );
+                setData(response.data);
+            } catch (error) {
+                console.log("Error fetching", error);
+            }
+        };
+        fetchData();
+    }, []);
+
     // в нижний регистр поиск
-    const filteredTraffics = technics.filter((technic) => {
+    const filteredTraffics = data.filter((technic) => {
         return technic.name.toLowerCase().includes(value.toLowerCase());
     });
 
