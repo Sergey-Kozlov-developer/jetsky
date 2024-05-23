@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import debounce from "lodash.debounce";
 import axios from "axios";
 
 import Swiper from "../components/swiper/index";
@@ -11,7 +12,9 @@ export const Home = () => {
     // useState для получения данных с бэка
     const [data, setData] = useState([]);
     // поиск. получение значение из input
-    const searchValueTarget = (event) => setValue(event.target.value);
+    const searchValueTarget = debounce((event) => {
+        setValue(event.target.value);
+    }, 300);
 
     useEffect(() => {
         const fetchData = async () => {
