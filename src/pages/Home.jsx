@@ -14,7 +14,7 @@ export const Home = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [fetchData]);
 
     // в нижний регистр поиск
     const filteredTraffics = data.filter((technic) => {
