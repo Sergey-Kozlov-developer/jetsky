@@ -1,0 +1,41 @@
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.jetskis {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+
+    ul {
+        display: flex;
+        margin-top: 40px;
+
+        li {
+            background-color: #f0f0f4;
+            color: #2f3035;
+            padding: 6px 28px;
+            border-radius: 10px;
+            margin-right: 10px;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.1s ease-in-out;
+            // @include noselect();
+
+            &:hover {
+                background-color: darken(#f9f9f9, 2%);
+            }
+
+            &:active {
+                background-color: darken(#f9f9f9, 5%);
+            }
+
+            &.active {
+                background-color: #282828;
+                color: #fff;
+            }
+        }
+    }
+}

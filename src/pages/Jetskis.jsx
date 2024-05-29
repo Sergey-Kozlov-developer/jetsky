@@ -1,7 +1,9 @@
+import JetskisCategories from "../components/jetskis";
+
 export const Jetskis = () => {
     return (
         <>
-            <h1>Jetskis</h1>
+            <JetskisCategories />
         </>
     );
 };
