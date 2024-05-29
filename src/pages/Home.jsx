@@ -1,32 +1,18 @@
-import { useEffect, useState } from "react";
-import debounce from "lodash.debounce";
-import axios from "axios";
+import { useEffect } from "react";
 
 import Swiper from "../components/swiper/index";
 import Search from "../components/search";
 import Traffics from "../components/traffics";
+import { useBack, useSearch } from "../store/useBack";
 
 export const Home = () => {
-    // useState для поиска
-    const [value, setValue] = useState("");
-    // useState для получения данных с бэка
-    const [data, setData] = useState([]);
-    // поиск. получение значение из input
-    const searchValueTarget = debounce((event) => {
-        setValue(event.target.value);
-    }, 300);
+    // для получения данных с бэка
+    const fetchData = useBack((state) => state.fetchData);
+    const data = useBack((state) => state.data);
+    // значение из инпута поиска
+    const value = useSearch((state) => state.value);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(
-                    "https://91f9067365762f2e.mokky.dev/items"
-                );
-                setData(response.data);
-            } catch (error) {
-                console.log("Error fetching", error);
-            }
-        };
         fetchData();
     }, []);
 
@@ -38,7 +24,7 @@ export const Home = () => {
     return (
         <>
             <Swiper />
-            <Search searchValueTarget={searchValueTarget} />
+            <Search />
             <Traffics filteredTraffics={filteredTraffics} />
         </>
     );

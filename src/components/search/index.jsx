@@ -1,7 +1,10 @@
+import { useSearch } from "../../store/useBack";
 import styles from "./Search.module.scss";
 import PropTypes from "prop-types";
 
-function Search({ searchValueTarget }) {
+function Search() {
+    const searchValueTarget = useSearch((state) => state.searchValueTarget);
+
     return (
         <>
             <div className={styles.searh}>
