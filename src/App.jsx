@@ -12,10 +12,10 @@ import Spareparts from "./pages/Spareparts.jsx";
 function App() {
 	return (
 		<>
-			<div className="wrap__nav">
+			<div className="fixed left-0 top-0 z-30 w-full bg-slate-200">
 				<Navigation />
 			</div>
-			<div className="container mx-auto mt-8">
+			<div className="container mx-auto mt-20">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/jetskis" element={<Jetskis />} />
