@@ -1,0 +1,74 @@
+[
+	{
+		"id": 1,
+		"name": "Гидроцикл BRP SeaDoo GTI 130hp SE Black Mango",
+		"price": 1049500,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-1.png?alt=media&token=06a21388-2b07-4037-a150-8f6ec28bb80f"
+	},
+	{
+		"id": 2,
+		"name": "Гидроцикл BRP SeaDoo GTI 155hp SE Long Blue Metallic",
+		"price": 1100475,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-2.png?alt=media&token=045ca647-befe-41cd-a224-d2474d5404d0"
+	},
+	{
+		"id": 3,
+		"name": "Гидроцикл BRP SeaDoo GTR 230hp X California green ",
+		"price": 1389500,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fs-l225-1.png?alt=media&token=be37b003-b7ee-48ba-83b6-9ba976004511"
+	},
+	{
+		"id": 4,
+		"name": "Гидроцикл BRP SeaDoo GTR 230hp STD Black / Gulfstream",
+		"price": 999875,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-3.png?alt=media&token=3c25363e-1115-41f5-9b91-4922f829f95a"
+	},
+	{
+		"id": 5,
+		"name": "Гидроцикл BRP SeaDoo GTX 300hp LTD Liquid Metal",
+		"price": 1549500,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-4.png?alt=media&token=01f43e65-4e28-41cf-9c85-a48aff8c91d2"
+	},
+	{
+		"id": 6,
+		"name": "Гидроцикл BRP SeaDoo Spark 60hp 2 up",
+		"price": 732589,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fs-l225-2.png?alt=media&token=f3c5486a-8dda-4feb-b352-60d5c05ab172"
+	},
+	{
+		"id": 7,
+		"name": "Гидроцикл BRP SeaDoo Spark GTS 90hp Rental",
+		"price": 857986,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-5.png?alt=media&token=d023395d-709f-4302-ba04-e0b3a5674e05"
+	},
+	{
+		"id": 8,
+		"name": "Гидроцикл BRP SeaDoo WAKE 230hp PRO Teal blue",
+		"price": 1298256,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-6.png?alt=media&token=be4bcbca-9e7e-405d-8f35-17ec436809be"
+	},
+	{
+		"id": 9,
+		"name": "Гидроцикл Spark 2-UP 900 Ho Ace Chili Pepper",
+		"price": 587963,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fs-l225-3.png?alt=media&token=943565c9-1719-4911-b875-92713e160297"
+	},
+	{
+		"id": 10,
+		"name": "Гидроцикл Spark 2-UP 900 Ho Ace Pineapple ",
+		"price": 587100,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-7.png?alt=media&token=d0cf023c-aef4-41ab-9d4d-3f9e3ddb2657"
+	},
+	{
+		"id": 11,
+		"name": "Гидроцикл BRP Sea-doo Spark 2-UP 900 Ace Vanilla ",
+		"price": 245888,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fimg-8.png?alt=media&token=6f85f110-2a53-4af0-8e22-869a40875020"
+	},
+	{
+		"id": 12,
+		"name": "Гидроцикл Spark 3-UP 900 HO Ace IBR Blueberry",
+		"price": 356745,
+		"img": "https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/jetsky%2Fproducts%2Fs-l225-4.png?alt=media&token=cc822ece-8c77-4473-9573-3c11bdab45ad"
+	}
+]
