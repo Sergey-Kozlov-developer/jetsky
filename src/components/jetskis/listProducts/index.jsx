@@ -1,4 +1,4 @@
-// import img from "../../../assets/img/categorie/img-1.png";
+import imgCart from "../../../assets/img/categorie/cart.png";
 import { useProducts } from "../useProducts";
 
 const ListProducts = () => {
@@ -12,13 +12,13 @@ const ListProducts = () => {
 						key={product.id}
 						className="h-full w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
 					>
-						<a href="#">
-							<img
-								className="rounded-t-lg p-8"
-								src={product.img}
-								alt="product image"
-							/>
-						</a>
+						{/* <a href="#"> */}
+						<img
+							className="rounded-t-lg p-8 "
+							src={product.img}
+							alt="product image"
+						/>
+						{/* </a> */}
 						<div className="px-5 pb-5">
 							<a href="#">
 								<h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -79,14 +79,14 @@ const ListProducts = () => {
 							</div>
 							<div className="flex items-center justify-between">
 								<span className="text-3xl font-bold text-gray-900 dark:text-white">
-									{product.price}
+									{product.price} ₽
 								</span>
-								<a
+								<button
 									href="#"
 									className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 								>
-									Add to cart
-								</a>
+									<img src={imgCart} alt="" />
+								</button>
 							</div>
 						</div>
 					</div>
