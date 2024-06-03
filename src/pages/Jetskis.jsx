@@ -7,15 +7,21 @@ import JetskisCategories from "../components/jetskis/categories";
 
 export const Jetskis = () => {
 	const fetchData = useProducts((state) => state.fetchData);
+	const categoryId = useProducts((state) => state.categoryId);
+	const onClickCategoryId = useProducts((state) => state.onClickCategoryId);
 
 	useEffect(() => {
 		fetchData();
+		window.scrollTo(0, 0);
 	}, [fetchData]);
 
 	return (
 		<>
 			<div className="flex justify-between">
-				<JetskisCategories />
+				<JetskisCategories
+					value={categoryId}
+					onChangeCategory={(i) => onClickCategoryId(i)}
+				/>
 
 				<JetskinsSort />
 			</div>

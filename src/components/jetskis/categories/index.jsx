@@ -1,10 +1,7 @@
-import { useProducts } from "../useProducts";
+// import { useProducts } from "../useProducts";
 
-const JetskisCategories = () => {
+const JetskisCategories = ({ value, onChangeCategory }) => {
 	const categories = ["Все", "BRP", "Spark"];
-
-	const categoryId = useProducts((state) => state.categoryId);
-	const onClickCategoryId = useProducts((state) => state.onClickCategoryId);
 
 	return (
 		<>
@@ -16,9 +13,9 @@ const JetskisCategories = () => {
 						{categories.map((categoryName, i) => (
 							<li
 								key={i}
-								onClick={() => onClickCategoryId(i)}
+								onClick={() => onChangeCategory(i)}
 								className={
-									categoryId === i
+									value === i
 										? "mr-2 cursor-pointer rounded-lg bg-slate-300 px-7 py-1 text-sm text-slate-700 transition delay-100 ease-in-out"
 										: "mr-2 cursor-pointer rounded-lg bg-slate-200 px-7 py-1 text-sm text-slate-700 transition delay-100 ease-in-out hover:bg-slate-300"
 								}

@@ -6,17 +6,20 @@ export const useProducts = create((set) => ({
 	categoryId: 0,
 	sortType: 0,
 	onClickCategoryId: (i) => {
-		console.log("onClickCategoryId", i);
-		// set({ categoryId: 0 });
-		// set({ categoryId: data.id });
+		// console.log("onClickCategoryId", i);
+		set({ categoryId: i });
 	},
 	fetchData: async () => {
+		const categoryId = set({ categoryId: 0 });
+
+		const category = categoryId > 0 ? `category=${categoryId}` : "";
+
 		try {
-			const response = await axios.get(
-				"https://91f9067365762f2e.mokky.dev/products"
-			);
+			const url = `https://91f9067365762f2e.mokky.dev/items?${category}`;
+			const response = await axios.get(url);
 			const result = response.data;
 			set({ data: result });
+			console.log(url);
 		} catch (error) {
 			console.log("Error products fetching", error);
 		}
