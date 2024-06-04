@@ -1,33 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Swiper from "../components/swiper/index";
 import Search from "../components/search";
 import Traffics from "../components/traffics";
-import { useBack, useSearch } from "../store/useBack";
+import axios from "axios";
+import debounce from "lodash.debounce";
 
 export const Home = () => {
-    // для получения данных с бэка
-    const fetchData = useBack((state) => state.fetchData);
-    const data = useBack((state) => state.data);
-    // значение из инпута поиска
-    const value = useSearch((state) => state.value);
+	// useState для поиска
+	const [value, setValue] = useState("");
 
-    useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+	// useState для получения данных с бэка
+	const [data, setData] = useState([]);
 
-    // в нижний регистр поиск
-    const filteredTraffics = data.filter((technic) => {
-        return technic.name.toLowerCase().includes(value.toLowerCase());
-    });
+	const searchValueTarget = debounce((event) => {
+		setValue(event.target.value);
+	}, 300);
 
-    return (
-        <>
-            <Swiper />
-            <Search />
-            <Traffics filteredTraffics={filteredTraffics} />
-        </>
-    );
+	useEffect(() => {
+		// const category = categoryId > 0 ? `category=${categoryId}` : "";
+		axios.get(`https://91f9067365762f2e.mokky.dev/list`).then((res) => {
+			setData(res.data);
+		});
+		window.scrollTo(0, 0);
+	}, []);
+
+	// в нижний регистр поиск
+	const filteredTraffics = data.filter((technic) => {
+		return technic.name.toLowerCase().includes(value.toLowerCase());
+	});
+
+	return (
+		<>
+			<Swiper />
+			<Search searchValueTarget={searchValueTarget} />
+			<Traffics filteredTraffics={filteredTraffics} />
+		</>
+	);
 };
 
 export default Home;

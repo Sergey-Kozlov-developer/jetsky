@@ -1,6 +1,6 @@
 // import { useProducts } from "../useProducts";
 
-const JetskisCategories = ({ value, onChangeCategory }) => {
+const JetskisCategories = ({ value, onClickCategory }) => {
 	const categories = ["Все", "BRP", "Spark"];
 
 	return (
@@ -13,7 +13,7 @@ const JetskisCategories = ({ value, onChangeCategory }) => {
 						{categories.map((categoryName, i) => (
 							<li
 								key={i}
-								onClick={() => onChangeCategory(i)}
+								onClick={() => onClickCategory(i)}
 								className={
 									value === i
 										? "mr-2 cursor-pointer rounded-lg bg-slate-300 px-7 py-1 text-sm text-slate-700 transition delay-100 ease-in-out"
