@@ -1,4 +1,5 @@
 // import { useProducts } from "../useProducts";
+import PropTypes from "prop-types";
 
 const JetskisCategories = ({ value, onClickCategory }) => {
 	const categories = ["Все", "BRP", "Spark"];
@@ -28,6 +29,11 @@ const JetskisCategories = ({ value, onClickCategory }) => {
 			</div>
 		</>
 	);
+};
+
+JetskisCategories.propTypes = {
+	value: PropTypes.number,
+	onClickCategory: PropTypes.func,
 };
 
 export default JetskisCategories;

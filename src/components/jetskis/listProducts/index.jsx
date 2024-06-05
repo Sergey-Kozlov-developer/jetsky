@@ -1,7 +1,7 @@
 import imgCart from "../../../assets/img/categorie/cart.png";
 import PropTypes from "prop-types";
 
-const ListProducts = ({ id, name, price, img, hp, category, rating }) => {
+const ListProducts = ({ name, price, img, rating }) => {
 	return (
 		<>
 			<div className="h-full w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
