@@ -10,10 +10,10 @@ const JetskinsSort = () => {
 	const [open, setOpen] = useState(false);
 
 	const list = [
-		{ name: "популярности desc", sortProperty: "rating" },
-		{ name: "популярности asc", sortProperty: "-rating" },
-		{ name: "цене desc", sortProperty: "price" },
-		{ name: "цене asc", sortProperty: "-price" },
+		{ name: "менее популярные", sortProperty: "rating" },
+		{ name: "популярные", sortProperty: "-rating" },
+		{ name: "недорогие", sortProperty: "price" },
+		{ name: "дорогие", sortProperty: "-price" },
 	];
 	const onClickListItem = (obj) => {
 		dispatch(setSort(obj));
@@ -22,9 +22,10 @@ const JetskinsSort = () => {
 	};
 	return (
 		<>
-			<div className="sort">
-				<div className="sort__label">
+			<div className="relative mt-16">
+				<div className=" flex items-center">
 					<svg
+						className="mr-2"
 						width="10"
 						height="6"
 						viewBox="0 0 10 6"
@@ -36,21 +37,26 @@ const JetskinsSort = () => {
 							fill="#2C2C2C"
 						/>
 					</svg>
-					<b>Сортировка по:</b>
-					<span onClick={() => setOpen(!open)}>{sort.name}</span>
+					<b className="mr-2">Сортировка по:</b>
+					<span
+						className="cursor-pointer border border-dashed border-red-400 text-red-400"
+						onClick={() => setOpen(!open)}
+					>
+						{sort.name}
+					</span>
 				</div>
 				{/*условный рендеринг с использованием &&(логический оператор И)*/}
 				{open && (
-					<div className="sort__popup">
-						<ul>
+					<div className="absolute right-0 mt-4 w-56 overflow-hidden rounded-xl bg-white px-3 py-0 shadow-slate-300">
+						<ul className="overflow-hidden">
 							{list.map((obj, index) => (
 								<li
 									key={index}
 									onClick={() => onClickListItem(obj)}
 									className={
 										sort.sortProperty === obj.sortProperty
-											? "active"
-											: ""
+											? "cursor-pointer px-5 py-3 font-semibold text-red-400"
+											: "cursor-pointer"
 									}
 								>
 									{obj.name}

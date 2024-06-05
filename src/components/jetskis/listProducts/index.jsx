@@ -1,6 +1,7 @@
 import imgCart from "../../../assets/img/categorie/cart.png";
+import PropTypes from "prop-types";
 
-const ListProducts = ({ id, name, price, img, hp, category }) => {
+const ListProducts = ({ id, name, price, img, hp, category, rating }) => {
 	return (
 		<>
 			<div className="h-full w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
@@ -64,7 +65,7 @@ const ListProducts = ({ id, name, price, img, hp, category }) => {
 							</svg>
 						</div>
 						<span className="ms-3 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
-							5.0
+							{rating}
 						</span>
 					</div>
 					<div className="flex items-center justify-between">
@@ -82,6 +83,16 @@ const ListProducts = ({ id, name, price, img, hp, category }) => {
 			</div>
 		</>
 	);
+};
+
+ListProducts.propTypes = {
+	id: PropTypes.number,
+	name: PropTypes.string,
+	price: PropTypes.number,
+	img: PropTypes.string,
+	// hp: PropTypes.string,
+	category: PropTypes.number,
+	rating: PropTypes.number,
 };
 
 export default ListProducts;

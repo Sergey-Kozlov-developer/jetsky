@@ -9,9 +9,9 @@ import { setCategoryId } from "../redux/slices/filterSlice";
 
 export const Jetskis = () => {
 	// данные с бэка
-	const [data, setData] = useState([]);
+	const [items, setItems] = useState([]);
 	// сортировка
-	const [sortType, setSortType] = useState(0);
+	// const [sortType, setSortType] = useState(0);
 	// skeleton
 	// const [isLoading, setIsLoading] = useState(true);
 
@@ -32,17 +32,20 @@ export const Jetskis = () => {
 
 	useEffect(() => {
 		// setIsLoading(true);
-		const order = sort.sortProperty.includes("-") ? "asc" : "desc";
-		const sortBy = sort.sortProperty.replace("-", "");
+		// const order = sort.sortProperty.includes("-") ? "asc" : "desc";
+		// const sortBy = sort.sortProperty.replace("-", "");
+		const sortBy = sort.sortProperty;
 		const category = categoryId > 0 ? `category=${categoryId}` : "";
 		axios
-			.get(`https://91f9067365762f2e.mokky.dev/items?${category}`)
+			.get(
+				`https://91f9067365762f2e.mokky.dev/items?${category}&sortBy=${sortBy}`
+			)
 			.then((res) => {
-				setData(res.data);
+				setItems(res.data);
 				// setIsLoading(false);
 			});
 		window.scrollTo(0, 0);
-	}, [categoryId, sortType, sort.sortProperty]);
+	}, [categoryId, sort.sortProperty]);
 
 	return (
 		<>
@@ -52,15 +55,12 @@ export const Jetskis = () => {
 					onClickCategory={onClickCategory}
 				/>
 
-				<JetskinsSort
-					value={sortType}
-					onChangeSort={(i) => setSortType(i)}
-				/>
+				<JetskinsSort />
 			</div>
 			<div className="mt-8 flex justify-between">
 				<Parametrs />
 				<div className="mx-auto grid w-4/5 grid-cols-3 gap-5">
-					{data.map((element) => (
+					{items.map((element) => (
 						<ListProducts key={element.id} {...element} />
 					))}
 				</div>
