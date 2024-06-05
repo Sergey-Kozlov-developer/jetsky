@@ -2,25 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-a {
-	display: inline-block;
-	/* color: #f66d52; Цвет обычной ссылки */
-	line-height: 1;
-	text-decoration: none; /* Убираем подчеркивание */
-	cursor: pointer;
-}
-a:after {
-	background-color: #f66d52; /* Цвет линии при наведении на нее курсора мыши */
-	display: block;
-	content: "";
-	height: 2px; /* Высота линии */
-	width: 0%;
+/* a { */
+/* display: inline-block; */
+/* color: #f66d52; Цвет обычной ссылки */
+/* line-height: 1; */
+/* text-decoration: none; Убираем подчеркивание */
+/* cursor: pointer; */
+/* } */
+/* a:after { */
+/* background-color: #f66d52; Цвет линии при наведении на нее курсора мыши */
+/* display: block; */
+/* content: ""; */
+/* height: 2px; Высота линии */
+/* width: 0%;
 	-webkit-transition: width 0.3s ease-in-out;
 	-moz--transition: width 0.3s ease-in-out;
 	transition: width 0.3s ease-in-out;
-	margin-top: 10px;
-}
-a:hover:after,
+	margin-top: 10px; */
+/* } */
+/* a:hover:after,
 a:focus:after {
 	width: 100%;
+} */
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	li {
+		/* display: flex;
+		flex-direction: c; */
+
+		a {
+			text-align: center;
+			width: 45px;
+			line-height: 42px;
+			height: 45px;
+			border: 1px solid rgb(51 65 85);
+			border-radius: 30px;
+			margin-right: 10px;
+			cursor: pointer;
+			display: inline-block;
+			color: rgb(51 65 85);
+
+			&:hover {
+				background-color: rgb(203 213 225);
+				color: rgb(51 65 85);
+			}
+			&:after {
+				text-decoration: none;
+			}
+		}
+	}
+
+	/* :global { */
+	.selected {
+		a {
+			background-color: rgb(203 213 225);
+			color: #fff;
+		}
+	}
+	/* } */
 }

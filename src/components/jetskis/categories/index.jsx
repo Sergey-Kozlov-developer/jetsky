@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const JetskisCategories = ({ value, onClickCategory }) => {
 	const categories = ["Все", "BRP", "Spark"];
-
 	return (
 		<>
 			<div>

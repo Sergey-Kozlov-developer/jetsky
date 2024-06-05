@@ -6,6 +6,7 @@ import JetskisCategories from "../components/jetskis/categories";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategoryId } from "../redux/slices/filterSlice";
+import Pagination from "../components/pagination";
 
 export const Jetskis = () => {
 	// данные с бэка
@@ -14,6 +15,8 @@ export const Jetskis = () => {
 	// const [sortType, setSortType] = useState(0);
 	// skeleton
 	// const [isLoading, setIsLoading] = useState(true);
+
+	const [currentPage, setCurrentPage] = useState(1);
 
 	// hook redux вытаскиваем определенное из state фильтра
 	const { categoryId, sort } = useSelector((state) => state.filter);
@@ -28,7 +31,6 @@ export const Jetskis = () => {
 	const onClickCategory = (id) => {
 		dispatch(setCategoryId(id));
 	};
-	console.log(categoryId);
 
 	useEffect(() => {
 		// setIsLoading(true);
@@ -45,7 +47,7 @@ export const Jetskis = () => {
 				// setIsLoading(false);
 			});
 		window.scrollTo(0, 0);
-	}, [categoryId, sort.sortProperty]);
+	}, [categoryId, sort.sortProperty, currentPage]);
 
 	return (
 		<>
@@ -65,6 +67,7 @@ export const Jetskis = () => {
 					))}
 				</div>
 			</div>
+			<Pagination onChangePage={(number) => setCurrentPage(number)} />
 		</>
 	);
 };
