@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function Traffics({ filteredTraffics }) {
 	return (
@@ -10,9 +11,9 @@ function Traffics({ filteredTraffics }) {
 						className="g-5 flex h-[129px] w-[370px] cursor-pointer items-center border border-solid border-zinc-400"
 					>
 						<div className="flex flex-col gap-12">
-							<a
+							<Link
 								className="pl-5 pt-5 text-xl font-bold"
-								href={
+								to={
 									technic.id == 1
 										? "/allterrain"
 										: "/" && technic.id == 2
@@ -29,7 +30,7 @@ function Traffics({ filteredTraffics }) {
 								}
 							>
 								{technic.name}
-							</a>
+							</Link>
 							<button className="pl-5 text-start text-slate-300">
 								Подробнее
 							</button>
