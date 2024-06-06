@@ -94,7 +94,7 @@ export const Jetskis = () => {
 	const products = items.map((element) => (
 		<ListProducts key={element.id} {...element} />
 	));
-	const skeletons = [...new Array(6)].map((_, index) => (
+	const skeletons = [...new Array(3)].map((_, index) => (
 		<Skeleton key={index} />
 	));
 
