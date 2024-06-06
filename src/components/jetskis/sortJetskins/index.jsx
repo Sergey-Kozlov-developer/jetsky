@@ -2,6 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../../redux/slices/filterSlice";
 import { useState } from "react";
 
+export const list = [
+	{ name: "менее популярные", sortProperty: "rating" },
+	{ name: "популярные", sortProperty: "-rating" },
+	{ name: "недорогие", sortProperty: "price" },
+	{ name: "дорогие", sortProperty: "-price" },
+];
 const JetskinsSort = () => {
 	// redux вытаскиваем из него метод сортировки
 	const dispatch = useDispatch();
@@ -9,12 +15,6 @@ const JetskinsSort = () => {
 	// useState для открытия меню сортировки
 	const [open, setOpen] = useState(false);
 
-	const list = [
-		{ name: "менее популярные", sortProperty: "rating" },
-		{ name: "популярные", sortProperty: "-rating" },
-		{ name: "недорогие", sortProperty: "price" },
-		{ name: "дорогие", sortProperty: "-price" },
-	];
 	const onClickListItem = (obj) => {
 		dispatch(setSort(obj));
 		// сбрасываем открытое окно выбора pop-up
