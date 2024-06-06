@@ -7,10 +7,11 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategoryId, setCurrentPage } from "../redux/slices/filterSlice";
 import Pagination from "../components/pagination";
+import Skeleton from "../components/jetskis/skeleton";
 
 export const Jetskis = () => {
 	// skeleton
-	// const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
 	// hook redux вытаскиваем определенное из state фильтра
 	// данные с бэка
 	const [items, setItems] = useState([]);
@@ -25,7 +26,7 @@ export const Jetskis = () => {
 	};
 
 	useEffect(() => {
-		// setIsLoading(true);
+		setIsLoading(true);
 		const sortBy = sort.sortProperty;
 		const category = categoryId > 0 ? `category=${categoryId}` : "";
 		axios
@@ -34,7 +35,7 @@ export const Jetskis = () => {
 			)
 			.then((res) => {
 				setItems(res.data.items);
-				// setIsLoading(false);
+				setIsLoading(false);
 			});
 		window.scrollTo(0, 0);
 	}, [categoryId, currentPage, sort.sortProperty]);
@@ -42,6 +43,13 @@ export const Jetskis = () => {
 	const onChangePage = (number) => {
 		dispatch(setCurrentPage(number));
 	};
+
+	const products = items.map((element) => (
+		<ListProducts key={element.id} {...element} />
+	));
+	const skeletons = [...new Array(6)].map((_, index) => (
+		<Skeleton key={index} />
+	));
 
 	return (
 		<>
@@ -56,9 +64,7 @@ export const Jetskis = () => {
 			<div className="mt-8 flex justify-between">
 				<Parametrs />
 				<div className="mx-auto grid w-4/5 grid-cols-3 gap-5">
-					{items.map((element) => (
-						<ListProducts key={element.id} {...element} />
-					))}
+					{isLoading ? skeletons : products}
 				</div>
 			</div>
 			<Pagination currentPage={currentPage} onChangePage={onChangePage} />
