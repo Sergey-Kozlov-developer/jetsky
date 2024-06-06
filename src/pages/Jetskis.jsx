@@ -14,14 +14,13 @@ import Pagination from "../components/pagination";
 import Skeleton from "../components/jetskis/skeleton";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
+import { setItems } from "../redux/slices/jetskisSlice";
 
 export const Jetskis = () => {
 	const navigate = useNavigate();
 	// skeleton
 	const [isLoading, setIsLoading] = useState(true);
 
-	// данные с бэка
-	const [items, setItems] = useState([]);
 	// если есть в url данные
 	const isSearch = useRef(false);
 	// первый рендер
@@ -30,25 +29,30 @@ export const Jetskis = () => {
 	const { categoryId, sort, currentPage } = useSelector(
 		(state) => state.filter
 	);
+	const { items } = useSelector((state) => state.jetskis);
 
 	const dispatch = useDispatch();
 	// выбор категории
 	const onClickCategory = (id) => {
 		dispatch(setCategoryId(id));
 	};
-
-	const fetchProducts = () => {
+	// данные с бэка
+	const fetchProducts = async () => {
 		setIsLoading(true);
 		const sortBy = sort.sortProperty;
 		const category = categoryId > 0 ? `category=${categoryId}` : "";
-		axios
-			.get(
+
+		try {
+			const { data } = await axios.get(
 				`https://91f9067365762f2e.mokky.dev/jetskins?page=${currentPage}&limit=3&${category}&sortBy=${sortBy}`
-			)
-			.then((res) => {
-				setItems(res.data.items);
-				setIsLoading(false);
-			});
+			);
+			dispatch(setItems(data.items));
+		} catch (error) {
+			console.log("AXIOS ERROR", error);
+			alert("Ошибка при получении данных");
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	// если изминили параметры и был первый рендер
