@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import ListProducts from "../components/jetskis/listProducts";
 import Parametrs from "../components/jetskis/parametrs";
 import JetskinsSort, { list } from "../components/jetskis/sortJetskins";
 import JetskisCategories from "../components/jetskis/categories";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	setCategoryId,
@@ -14,13 +13,10 @@ import Pagination from "../components/pagination";
 import Skeleton from "../components/jetskis/skeleton";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-import { setItems } from "../redux/slices/jetskisSlice";
+import { fetchJetskis } from "../redux/slices/jetskisSlice";
 
 export const Jetskis = () => {
 	const navigate = useNavigate();
-	// skeleton
-	const [isLoading, setIsLoading] = useState(true);
-
 	// если есть в url данные
 	const isSearch = useRef(false);
 	// первый рендер
@@ -29,7 +25,8 @@ export const Jetskis = () => {
 	const { categoryId, sort, currentPage } = useSelector(
 		(state) => state.filter
 	);
-	const { items } = useSelector((state) => state.jetskis);
+	// hook redux вытаскиваем hook redux вытаскиваем items status jetskisSlice
+	const { items, status } = useSelector((state) => state.jetskins);
 
 	const dispatch = useDispatch();
 	// выбор категории
@@ -38,21 +35,16 @@ export const Jetskis = () => {
 	};
 	// данные с бэка
 	const fetchProducts = async () => {
-		setIsLoading(true);
 		const sortBy = sort.sortProperty;
 		const category = categoryId > 0 ? `category=${categoryId}` : "";
-
-		try {
-			const { data } = await axios.get(
-				`https://91f9067365762f2e.mokky.dev/jetskins?page=${currentPage}&limit=3&${category}&sortBy=${sortBy}`
-			);
-			dispatch(setItems(data.items));
-		} catch (error) {
-			console.log("AXIOS ERROR", error);
-			alert("Ошибка при получении данных");
-		} finally {
-			setIsLoading(false);
-		}
+		// получаем и сохраняем данные бэка из jetskisSlice
+		dispatch(
+			fetchJetskis({
+				sortBy,
+				category,
+				currentPage,
+			})
+		);
 	};
 
 	// если изминили параметры и был первый рендер
@@ -115,7 +107,16 @@ export const Jetskis = () => {
 			<div className="mt-8 flex justify-between">
 				<Parametrs />
 				<div className="mx-auto grid w-4/5 grid-cols-3 gap-5">
-					{isLoading ? skeletons : products}
+					{status === "error" ? (
+						<div>
+							<h1>Произошла ошибка 😕</h1>
+							<p>Попробуйте повторить попытку позже.</p>
+						</div>
+					) : status === "loading" ? (
+						skeletons
+					) : (
+						products
+					)}
 				</div>
 			</div>
 			<Pagination currentPage={currentPage} onChangePage={onChangePage} />
