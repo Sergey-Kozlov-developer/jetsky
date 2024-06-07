@@ -7,7 +7,7 @@ export const fetchJetskis = createAsyncThunk(
 	async (params) => {
 		const { sortBy, category, currentPage } = params;
 		const { data } = await axios.get(
-			`https://-91f9067365762f2e.mokky.dev/jetskins?page=${currentPage}&limit=3&${category}&sortBy=${sortBy}`
+			`https://91f9067365762f2e.mokky.dev/jetskins?page=${currentPage}&limit=3&${category}&sortBy=${sortBy}`
 		);
 		return data.items;
 	}

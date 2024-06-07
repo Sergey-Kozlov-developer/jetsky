@@ -108,8 +108,10 @@ export const Jetskis = () => {
 				<Parametrs />
 				<div className="mx-auto grid w-4/5 grid-cols-3 gap-5">
 					{status === "error" ? (
-						<div>
-							<h1>Произошла ошибка 😕</h1>
+						<div className="mx-auto mt-5">
+							<h1 className="text-xl font-bold">
+								Произошла ошибка 😕
+							</h1>
 							<p>Попробуйте повторить попытку позже.</p>
 						</div>
 					) : status === "loading" ? (
