@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import ListProducts from "../components/jetskis/listProducts";
-import Parametrs from "../components/jetskis/parametrs";
+// import Parametrs from "../components/jetskis/parametrs";
 import JetskinsSort, { list } from "../components/jetskis/sortJetskins";
 import JetskisCategories from "../components/jetskis/categories";
 import { useSelector, useDispatch } from "react-redux";
@@ -96,7 +96,7 @@ export const Jetskis = () => {
 
 	return (
 		<>
-			<div className="flex justify-between">
+			<div className="sm:grid md:flex md:justify-between">
 				<JetskisCategories
 					value={categoryId}
 					onClickCategory={onClickCategory}
@@ -105,8 +105,8 @@ export const Jetskis = () => {
 				<JetskinsSort />
 			</div>
 			<div className="mt-8 flex justify-between">
-				<Parametrs />
-				<div className="mx-auto grid w-4/5 grid-cols-3 gap-5">
+				{/* <Parametrs /> */}
+				<div className="mx-auto grid w-4/5 gap-5 sm:grid-cols-1 md:grid-cols-3">
 					{status === "error" ? (
 						<div className="mx-auto mt-5">
 							<h1 className="text-xl font-bold">

@@ -9,7 +9,7 @@ const JetskisCategories = ({ value, onClickCategory }) => {
 				<h1>Гидроциклы</h1>
 
 				<div>
-					<ul className="mt-10 flex">
+					<ul className="mt-10 flex sm:pl-10 md:pl-0">
 						{categories.map((categoryName, i) => (
 							<li
 								key={i}
