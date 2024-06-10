@@ -15,7 +15,7 @@ function App() {
 			<div className="fixed left-0 top-0 z-30 w-full bg-slate-200">
 				<Navigation />
 			</div>
-			<div className="container mx-auto mt-20">
+			<div className="mx-auto sm:container sm:mt-28 md:mt-20">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/jetskis" element={<Jetskis />} />

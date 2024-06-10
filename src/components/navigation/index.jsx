@@ -7,42 +7,46 @@ function Navigation() {
 			to: "/",
 			page: "Главная",
 		},
-		{
-			to: "/allterrain",
-			page: "Вездеходы",
-		},
-		{
-			to: "/quadbike",
-			page: "Квадроциклы",
-		},
-		{
-			to: "/snowmobiles",
-			page: "Снегоходы",
-		},
+		// {
+		// 	to: "/allterrain",
+		// 	page: "Вездеходы",
+		// },
+		// {
+		// 	to: "/quadbike",
+		// 	page: "Квадроциклы",
+		// },
+		// {
+		// 	to: "/snowmobiles",
+		// 	page: "Снегоходы",
+		// },
 		{
 			to: "/jetskis",
 			page: "Гидроциклы",
 		},
-		{
-			to: "/boats",
-			page: "Катера",
-		},
-		// Engines
-		{
-			to: "/engines",
-			page: "Двигатели",
-		},
-		{
-			to: "/spareparts",
-			page: "Запчасти",
-		},
+		// {
+		// 	to: "/boats",
+		// 	page: "Катера",
+		// },
+		// // Engines
+		// {
+		// 	to: "/engines",
+		// 	page: "Двигатели",
+		// },
+		// {
+		// 	to: "/spareparts",
+		// 	page: "Запчасти",
+		// },
 	];
 
 	return (
-		<header className="container relative mx-auto">
-			<div className="relative z-50 flex items-center justify-between gap-10">
-				<div className="flex items-center justify-between gap-10">
-					<img src={logo} alt="" className="mb-2 h-12 w-12" />
+		<header className="sm:container md:container sm:relative md:mx-auto">
+			<div className="relative z-50 sm:flex sm:items-center sm:justify-center sm:gap-5">
+				<div className="sm:flex sm:items-center sm:justify-between sm:gap-5 md:gap-10">
+					<img
+						src={logo}
+						alt=""
+						className="sm:mb-2 sm:h-12 sm:w-12"
+					/>
 					<h3 className="text-slate-500">Скорость и экстрим</h3>
 				</div>
 
