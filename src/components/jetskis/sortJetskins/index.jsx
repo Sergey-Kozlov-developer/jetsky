@@ -23,7 +23,7 @@ const JetskinsSort = () => {
 	return (
 		<>
 			<div className="relative sm:mt-8 md:mt-16">
-				<div className=" flex items-center">
+				<div className="flex items-center">
 					<svg
 						className="mr-2"
 						width="10"
