@@ -28,7 +28,7 @@ export const Jetskis: React.FC = () => {
 	// hook redux вытаскиваем hook redux вытаскиваем items status jetskisSlice
 	const { items, status } = useSelector(selectJetskisData);
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch<any>();
 	// выбор категории
 	const onClickCategory = (id: number) => {
 		dispatch(setCategoryId(id));
