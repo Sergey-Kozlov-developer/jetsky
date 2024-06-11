@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Swiper from "../components/swiper/index";
 import Search from "../components/search";
@@ -6,7 +6,7 @@ import Traffics from "../components/traffics";
 import axios from "axios";
 import debounce from "lodash.debounce";
 
-export const Home = () => {
+export const Home: React.FC = () => {
 	// useState для поиска
 	const [value, setValue] = useState("");
 

@@ -1,17 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
-// запрос на сервер
-export const fetchJetskis = createAsyncThunk(
-	"jetskins/fetchJetskisStatus",
-	async (params) => {
-		const { sortBy, category, currentPage } = params;
-		const { data } = await axios.get(
-			`https://91f9067365762f2e.mokky.dev/jetskins?page=${currentPage}&limit=3&${category}&sortBy=${sortBy}`
-		);
-		return data.items;
-	}
-);
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { fetchJetskis } from "./asyncActions";
+import { Jetskis, Status } from "./types";
 
 // начальное состояние
 const initialState = {
@@ -24,7 +13,7 @@ const jetskisSlice = createSlice({
 	initialState,
 	// methods
 	reducers: {
-		setItems(state, action) {
+		setItems(state, action: PayloadAction<Jetskis[]>) {
 			state.items = action.payload;
 		},
 	},
@@ -33,15 +22,15 @@ const jetskisSlice = createSlice({
 		// ниже код заменяет try|catch в axios запросе в компоненте
 		builder
 			.addCase(fetchJetskis.pending, (state) => {
-				state.status = "loading";
+				state.status = Status.LOADING;
 				state.items = [];
 			})
 			.addCase(fetchJetskis.fulfilled, (state, action) => {
 				state.items = action.payload;
-				state.status = "success";
+				state.status = Status.SUCCESS;
 			})
 			.addCase(fetchJetskis.rejected, (state) => {
-				state.status = "error";
+				state.status = Status.ERROR;
 				state.items = [];
 			});
 	},

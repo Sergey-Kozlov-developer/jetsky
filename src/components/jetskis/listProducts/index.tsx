@@ -1,7 +1,21 @@
 import imgCart from "../../../assets/img/categorie/cart.png";
-import PropTypes from "prop-types";
 
-const ListProducts = ({ name, price, img, rating }) => {
+type ProductsProps = {
+	id: number;
+	name: string;
+	price: number;
+	img: string;
+	// hp: PropTypes.string,
+	category: number;
+	rating: number;
+};
+
+const ListProducts: React.FC<ProductsProps> = ({
+	name,
+	price,
+	img,
+	rating,
+}) => {
 	return (
 		<>
 			<div className="h-full w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
@@ -72,10 +86,7 @@ const ListProducts = ({ name, price, img, rating }) => {
 						<span className="text-3xl font-bold text-gray-900 dark:text-white">
 							{price} ₽
 						</span>
-						<button
-							href="#"
-							className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-						>
+						<button className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 							<img src={imgCart} alt="" />
 						</button>
 					</div>
@@ -83,16 +94,6 @@ const ListProducts = ({ name, price, img, rating }) => {
 			</div>
 		</>
 	);
-};
-
-ListProducts.propTypes = {
-	id: PropTypes.number,
-	name: PropTypes.string,
-	price: PropTypes.number,
-	img: PropTypes.string,
-	// hp: PropTypes.string,
-	category: PropTypes.number,
-	rating: PropTypes.number,
 };
 
 export default ListProducts;

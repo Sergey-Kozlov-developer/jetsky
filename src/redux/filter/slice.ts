@@ -1,12 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { FilterSliceState, Sort, SortPropertyEnum } from "./type";
 
 // начальное состояние
-const initialState = {
+const initialState: FilterSliceState = {
 	categoryId: 0,
 	currentPage: 1,
 	sort: {
 		name: "популярные",
-		sortProperty: "-rating",
+		sortProperty: SortPropertyEnum.RATING_DESC,
 	},
 };
 
@@ -15,17 +16,17 @@ const filterSlice = createSlice({
 	initialState,
 	// methods
 	reducers: {
-		setCategoryId(state, action) {
+		setCategoryId(state, action: PayloadAction<number>) {
 			state.categoryId = action.payload;
 		},
-		setSort(state, action) {
+		setSort(state, action: PayloadAction<Sort>) {
 			state.sort = action.payload;
 		},
-		setCurrentPage(state, action) {
+		setCurrentPage(state, action: PayloadAction<number>) {
 			state.currentPage = action.payload;
 		},
 		// вшиваем в url
-		setFilters(state, action) {
+		setFilters(state, action: PayloadAction<FilterSliceState>) {
 			state.currentPage = Number(action.payload.currentPage);
 			state.sort = action.payload.sort;
 			state.categoryId = Number(action.payload.categoryId);

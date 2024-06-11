@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import ListProducts from "../components/jetskis/listProducts";
 // import Parametrs from "../components/jetskis/parametrs";
 import JetskinsSort, { list } from "../components/jetskis/sortJetskins";
@@ -8,29 +8,29 @@ import {
 	setCategoryId,
 	setCurrentPage,
 	setFilters,
-} from "../redux/slices/filterSlice";
+} from "../redux/filter/slice";
 import Pagination from "../components/pagination";
 import Skeleton from "../components/jetskis/skeleton";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-import { fetchJetskis } from "../redux/slices/jetskisSlice";
+import { fetchJetskis } from "../redux/jetskis/asyncActions";
+import { selectFilter } from "../redux/filter/selectors";
+import { selectJetskisData } from "../redux/jetskis/selectors";
 
-export const Jetskis = () => {
+export const Jetskis: React.FC = () => {
 	const navigate = useNavigate();
 	// если есть в url данные
 	const isSearch = useRef(false);
 	// первый рендер
 	const isMounted = useRef(false);
 	// hook redux вытаскиваем определенное из state фильтра
-	const { categoryId, sort, currentPage } = useSelector(
-		(state) => state.filter
-	);
+	const { categoryId, sort, currentPage } = useSelector(selectFilter);
 	// hook redux вытаскиваем hook redux вытаскиваем items status jetskisSlice
-	const { items, status } = useSelector((state) => state.jetskins);
+	const { items, status } = useSelector(selectJetskisData);
 
 	const dispatch = useDispatch();
 	// выбор категории
-	const onClickCategory = (id) => {
+	const onClickCategory = (id: number) => {
 		dispatch(setCategoryId(id));
 	};
 	// данные с бэка
@@ -42,9 +42,10 @@ export const Jetskis = () => {
 			fetchJetskis({
 				sortBy,
 				category,
-				currentPage,
+				currentPage: String(currentPage),
 			})
 		);
+		window.scrollTo(0, 0);
 	};
 
 	// если изминили параметры и был первый рендер
@@ -83,11 +84,11 @@ export const Jetskis = () => {
 		isSearch.current = false;
 	}, [categoryId, currentPage, sort.sortProperty]);
 
-	const onChangePage = (number) => {
+	const onChangePage = (number: number) => {
 		dispatch(setCurrentPage(number));
 	};
 
-	const products = items.map((element) => (
+	const products = items.map((element: any) => (
 		<ListProducts key={element.id} {...element} />
 	));
 	const skeletons = [...new Array(3)].map((_, index) => (

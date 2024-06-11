@@ -1,7 +1,14 @@
 // import { useProducts } from "../useProducts";
-import PropTypes from "prop-types";
+import React from "react";
 
-const JetskisCategories = ({ value, onClickCategory }) => {
+type CategoriesProps = {
+	value: number;
+	onClickCategory: (i: number) => void;
+};
+const JetskisCategories: React.FC<CategoriesProps> = ({
+	value,
+	onClickCategory,
+}) => {
 	const categories = ["Все", "BRP", "Spark"];
 	return (
 		<>
@@ -28,11 +35,6 @@ const JetskisCategories = ({ value, onClickCategory }) => {
 			</div>
 		</>
 	);
-};
-
-JetskisCategories.propTypes = {
-	value: PropTypes.number,
-	onClickCategory: PropTypes.func,
 };
 
 export default JetskisCategories;
