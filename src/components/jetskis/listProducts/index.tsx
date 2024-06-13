@@ -1,7 +1,13 @@
-import imgCart from "../../../assets/img/categorie/cart.png";
+// import imgCart from "../../../assets/img/categorie/cart.png";
+
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartItemById } from "../../../redux/cart/selectors";
+import { CartItem } from "../../../redux/cart/type";
+import { addItem } from "../../../redux/cart/slice";
 
 type ProductsProps = {
-	id: number;
+	id: string;
 	name: string;
 	price: number;
 	img: string;
@@ -11,11 +17,29 @@ type ProductsProps = {
 };
 
 const ListProducts: React.FC<ProductsProps> = ({
+	id,
 	name,
 	price,
 	img,
 	rating,
 }) => {
+	const dispatch = useDispatch();
+	const cartItem = useSelector(selectCartItemById(id));
+
+	const addCount = cartItem ? cartItem.count : 0;
+
+	const onClickAdd = () => {
+		const item: CartItem = {
+			id,
+			name,
+			price,
+			img,
+
+			count: 0,
+		};
+		dispatch(addItem(item));
+	};
+
 	return (
 		<>
 			<div className="h-full w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
@@ -82,12 +106,34 @@ const ListProducts: React.FC<ProductsProps> = ({
 							{rating}
 						</span>
 					</div>
-					<div className="flex items-center justify-between">
+					<div className="flex flex-col items-center justify-between">
 						<span className="text-3xl font-bold text-gray-900 dark:text-white">
 							{price} ₽
 						</span>
-						<button className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-							<img src={imgCart} alt="" />
+						<button
+							onClick={onClickAdd}
+							className="mt-2 flex items-center gap-2 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+						>
+							{/* <img src={imgCart} alt="" /> */}
+							<span>Добавить</span>
+							<svg
+								width="12"
+								height="12"
+								viewBox="0 0 12 12"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+									fill="white"
+								/>
+							</svg>
+							{/* если count 0, то не выводим бейдж */}
+							{addCount > 0 && (
+								<i className="relative -top-[1px] left-1 inline-block h-5 w-5 items-center justify-center rounded-3xl bg-orange-400 p-0 font-bold">
+									{addCount}
+								</i>
+							)}
 						</button>
 					</div>
 				</div>

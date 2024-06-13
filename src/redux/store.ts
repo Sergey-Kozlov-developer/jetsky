@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import filter from "./filter/slice";
 import jetskins from "./jetskis/slice";
+import cart from "./cart/slice";
 import { useDispatch } from "react-redux";
 
 export const store = configureStore({
-	reducer: { filter, jetskins },
+	reducer: { filter, jetskins, cart },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

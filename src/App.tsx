@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/navigation/index.js";
 import Home from "./pages/Home.js";
 import Jetskis from "./pages/Jetskis.js";
+import CartItem from "./components/cart/index.js";
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/jetskis" element={<Jetskis />} />
+					<Route path="/cart" element={<CartItem />} />
 				</Routes>
 			</div>
 		</>

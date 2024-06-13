@@ -1,5 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/drivelogo.svg";
+import cart from "../../assets/cart.svg";
+import { useSelector } from "react-redux";
+import { selectCart } from "../../redux/cart/selectors";
+import React from "react";
 
 function Navigation() {
 	const routes = [
@@ -7,36 +11,33 @@ function Navigation() {
 			to: "/",
 			page: "Главная",
 		},
-		// {
-		// 	to: "/allterrain",
-		// 	page: "Вездеходы",
-		// },
-		// {
-		// 	to: "/quadbike",
-		// 	page: "Квадроциклы",
-		// },
-		// {
-		// 	to: "/snowmobiles",
-		// 	page: "Снегоходы",
-		// },
+
 		{
 			to: "/jetskis",
 			page: "Гидроциклы",
 		},
-		// {
-		// 	to: "/boats",
-		// 	page: "Катера",
-		// },
-		// // Engines
-		// {
-		// 	to: "/engines",
-		// 	page: "Двигатели",
-		// },
-		// {
-		// 	to: "/spareparts",
-		// 	page: "Запчасти",
-		// },
+		{
+			to: "/cart",
+			// page: "Корзина",
+		},
 	];
+
+	const { items, totalPrice } = useSelector(selectCart);
+	const location = useLocation();
+	const isMounted = React.useRef(false);
+
+	const totalCount = items.reduce(
+		(sum: number, item: any) => sum + item.count,
+		0
+	);
+
+	React.useEffect(() => {
+		if (isMounted.current) {
+			const json = JSON.stringify(items);
+			localStorage.setItem("cart", json);
+		}
+		isMounted.current = true;
+	}, [items]);
 
 	return (
 		<header className="sm:container md:container sm:relative md:mx-auto">
@@ -63,6 +64,19 @@ function Navigation() {
 						</NavLink>
 					))}
 				</ul>
+				<div className="">
+					{location.pathname !== "/cart" && (
+						<Link
+							to="/cart"
+							className="flex items-center justify-between gap-2"
+						>
+							<span>{totalPrice} ₽</span>
+							<div className="ml-3 mr-3 h-6 w-[1px] bg-orange-400"></div>
+							<img className="h-5 w-5" src={cart} alt="" />
+							<span>{totalCount}</span>
+						</Link>
+					)}
+				</div>
 			</div>
 		</header>
 	);
