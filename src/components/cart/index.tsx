@@ -1,12 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem, minusItem, removeItem } from "../../redux/cart/slice";
 import { CartItem as CartItemType } from "../../redux/cart/type";
 import { Link } from "react-router-dom";
+import { selectCart } from "../../redux/cart/selectors";
 
 type CartItemProps = {
 	id: string;
-	title: string;
+	name: string;
 	type: string;
 	// size: number;
 	price: number;
@@ -16,7 +17,7 @@ type CartItemProps = {
 
 const CartItem: React.FC<CartItemProps> = ({
 	id,
-	title,
+	name,
 	// type,
 	// size,
 	price,
@@ -24,6 +25,12 @@ const CartItem: React.FC<CartItemProps> = ({
 	imageUrl,
 }) => {
 	const dispatch = useDispatch();
+	const { totalPrice, items } = useSelector(selectCart);
+
+	const totalCount = items.reduce(
+		(sum: number, item: any) => sum + item.count,
+		0
+	);
 	const onClickPlus = () => {
 		dispatch(
 			addItem({
@@ -75,25 +82,28 @@ const CartItem: React.FC<CartItemProps> = ({
 							</div>
 							<div className="pro-data w-full max-w-sm ">
 								<h5 className="text-xl font-semibold leading-8 text-black max-[550px]:text-center">
-									{title}
+									{name}
 								</h5>
 								<p className="my-2 text-lg font-normal leading-8 text-gray-500 max-[550px]:text-center min-[550px]:my-3">
 									Perfumes
 								</p>
 								<h6 className="text-lg font-medium leading-8 text-indigo-600  max-[550px]:text-center">
-									$120.00
+									${price}
 								</h6>
 							</div>
 						</div>
 						<div className="flex w-full flex-col items-center gap-2 max-xl:mx-auto max-xl:max-w-xl min-[550px]:flex-row">
 							<h6 className="font-manrope w-full max-w-[176px] text-center text-2xl font-bold leading-9 text-black">
-								$15.00{" "}
+								${price}{" "}
 								<span className="ml-3 whitespace-nowrap text-sm text-gray-300 lg:hidden">
 									(Delivery Charge)
 								</span>
 							</h6>
 							<div className="mx-auto flex w-full items-center justify-center">
-								<button className="group flex items-center justify-center rounded-l-full border border-gray-200 px-6 py-[18px] shadow-sm shadow-transparent transition-all duration-500 hover:border-gray-300 hover:bg-gray-50 hover:shadow-gray-200">
+								<button
+									// onClick={onClickMinus}
+									className="group flex items-center justify-center rounded-l-full border border-gray-200 px-6 py-[18px] shadow-sm shadow-transparent transition-all duration-500 hover:border-gray-300 hover:bg-gray-50 hover:shadow-gray-200"
+								>
 									<svg
 										className="stroke-gray-900 transition-all duration-500 group-hover:stroke-black"
 										xmlns="http://www.w3.org/2000/svg"
@@ -127,9 +137,12 @@ const CartItem: React.FC<CartItemProps> = ({
 								<input
 									type="text"
 									className="w-full min-w-[80px] max-w-[118px] border-y border-gray-200 bg-transparent py-[15px] text-center text-lg font-semibold text-gray-900 outline-none placeholder:text-gray-900"
-									placeholder="1"
+									placeholder={String(totalCount)}
 								/>
-								<button className="group flex items-center justify-center rounded-r-full border border-gray-200 px-6 py-[18px] shadow-sm shadow-transparent transition-all duration-500 hover:border-gray-300 hover:bg-gray-50 hover:shadow-gray-200">
+								<button
+									// onClick={onClickPlus}
+									className="group flex items-center justify-center rounded-r-full border border-gray-200 px-6 py-[18px] shadow-sm shadow-transparent transition-all duration-500 hover:border-gray-300 hover:bg-gray-50 hover:shadow-gray-200"
+								>
 									<svg
 										className="stroke-gray-900 transition-all duration-500 group-hover:stroke-black"
 										xmlns="http://www.w3.org/2000/svg"
@@ -162,26 +175,26 @@ const CartItem: React.FC<CartItemProps> = ({
 								</button>
 							</div>
 							<h6 className="font-manrope w-full max-w-[176px] text-center text-2xl font-bold leading-9 text-indigo-600">
-								$120.00
+								${totalPrice}
 							</h6>
 						</div>
 					</div>
 					{/* общее кол-во */}
-					<div className="mb-8 w-full rounded-xl bg-gray-50 p-6 max-lg:mx-auto max-lg:max-w-xl">
+					{/* <div className="mb-8 w-full rounded-xl bg-gray-50 p-6 max-lg:mx-auto max-lg:max-w-xl">
 						<div className="mb-6 flex w-full items-center justify-between">
 							<p className="text-xl font-normal leading-8 text-gray-400">
-								Sub Total
+								Всего
 							</p>
 							<h6 className="text-xl font-semibold leading-8 text-gray-900">
-								$360.00
+								${totalPrice}
 							</h6>
 						</div>
 						<div className="flex w-full items-center justify-between border-b border-gray-200 pb-6">
 							<p className="text-xl font-normal leading-8 text-gray-400">
-								Delivery Charge
+								Налог
 							</p>
 							<h6 className="text-xl font-semibold leading-8 text-gray-900">
-								$45.00
+								${totalPrice * 0.13}
 							</h6>
 						</div>
 						<div className="flex w-full items-center justify-between py-6">
@@ -192,7 +205,7 @@ const CartItem: React.FC<CartItemProps> = ({
 								$405.00
 							</h6>
 						</div>
-					</div>
+					</div> */}
 					<div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 						<button className="flex w-full max-w-[280px] items-center  justify-center rounded-full bg-indigo-50 py-4 transition-all duration-500 hover:bg-indigo-100">
 							<Link
