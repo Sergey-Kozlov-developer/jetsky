@@ -40,7 +40,7 @@ const Cart: React.FC = () => {
 								Ваша корзина
 							</h2>
 							<h3 className="text-base text-gray-800">
-								{totalCount} Товар
+								{totalCount} шт.
 							</h3>
 						</div>
 
