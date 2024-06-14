@@ -13,6 +13,16 @@ export default {
 			colors: {
 				"link-active": "#f66d52",
 			},
+			animation: {
+				mymove: "mymove 2.5s infinite",
+			},
+			keyframes: {
+				mymove: {
+					"33%": { top: "0px" },
+					"66%": { top: "20px" },
+					"100%": { top: "0px" },
+				},
+			},
 		},
 	},
 	plugins: [],

@@ -41,7 +41,7 @@ function Navigation() {
 
 	return (
 		<header className="sm:container md:container sm:relative md:mx-auto">
-			<div className="relative z-50 sm:flex sm:items-center sm:justify-center sm:gap-5">
+			<div className="relative z-50 sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-5 md:flex-row">
 				<div className="sm:flex sm:items-center sm:justify-between sm:gap-5 md:gap-10">
 					<img
 						src={logo}

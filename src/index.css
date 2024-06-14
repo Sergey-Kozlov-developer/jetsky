@@ -2,28 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* a { */
-/* display: inline-block; */
-/* color: #f66d52; Цвет обычной ссылки */
-/* line-height: 1; */
-/* text-decoration: none; Убираем подчеркивание */
-/* cursor: pointer; */
-/* } */
-/* a:after { */
-/* background-color: #f66d52; Цвет линии при наведении на нее курсора мыши */
-/* display: block; */
-/* content: ""; */
-/* height: 2px; Высота линии */
-/* width: 0%;
-	-webkit-transition: width 0.3s ease-in-out;
-	-moz--transition: width 0.3s ease-in-out;
-	transition: width 0.3s ease-in-out;
-	margin-top: 10px; */
-/* } */
-/* a:hover:after,
-a:focus:after {
-	width: 100%;
-} */
+.emoji-404 {
+	position: relative;
+	animation: mymove 2.5s infinite;
+}
+@keyframes mymove {
+	33% {
+		top: 0px;
+	}
+	66% {
+		top: 20px;
+	}
+	100% {
+		top: 0px;
+	}
+}
 .pagination {
 	display: flex;
 	align-items: center;
